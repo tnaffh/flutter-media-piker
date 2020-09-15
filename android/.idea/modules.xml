@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/christian_picker_image.iml" filepath="$PROJECT_DIR$/.idea/modules/christian_picker_image.iml" group="christian_picker_image" />
     </modules>
   </component>
 </project>

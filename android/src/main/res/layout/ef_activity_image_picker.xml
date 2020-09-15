@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -41,5 +41,33 @@
         android:layout_alignBottom="@+id/recyclerView"
         android:layout_alignParentBottom="true"
         android:background="@color/ef_black_alpha_aa"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_capture"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_camera"
+        android:tint="@color/ef_white"
+        android:contentDescription="Capture"
+        android:layout_margin="16dp" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_continue"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        app:icon="@drawable/ic_camera"
+        app:iconTint="@color/ef_white"
+        android:backgroundTint="@color/ef_teal"
+        android:text="Condinue"
+        android:textColor="@color/ef_white"
+        android:tint="@color/ef_white"
+        android:contentDescription="Condinue"
+        android:layout_margin="16dp" />
 
 </RelativeLayout>
