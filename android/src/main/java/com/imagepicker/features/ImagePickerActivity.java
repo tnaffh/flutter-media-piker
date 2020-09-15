@@ -32,6 +32,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.christian.christian_picker_image.R;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.imagepicker.features.camera.CameraHelper;
 import com.imagepicker.features.camera.DefaultCameraModule;
 import com.imagepicker.features.cameraonly.CameraOnlyConfig;
@@ -75,6 +77,9 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
     private ImagePickerPreferences preferences;
     private ImagePickerConfig config;
 
+    private FloatingActionButton captureFab;
+    private ExtendedFloatingActionButton doneFab;
+
     private Handler handler;
     private ContentObserver observer;
 
@@ -113,8 +118,16 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
                 setContentView(R.layout.ef_activity_image_picker);
                 setupView(config);
                 setupRecyclerView(config);
+
+                if (recyclerViewManager.isShowDoneButton()){
+                    doneFab.show();
+                }else {
+                    doneFab.hide();
+                }
             }
         }
+
+
     }
 
     private BaseConfig getBaseConfig() {
@@ -146,6 +159,12 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
         recyclerView = findViewById(R.id.recyclerView);
         snackBarView = findViewById(R.id.ef_snackbar);
 
+        captureFab = findViewById(R.id.fab_capture);
+        doneFab = findViewById(R.id.fab_done);
+
+
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
@@ -161,6 +180,12 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
             actionBar.setHomeAsUpIndicator(arrowDrawable);
             actionBar.setDisplayShowTitleEnabled(true);
         }
+
+        // capture fab
+        captureFab.setOnClickListener(v -> captureImageWithPermission());
+
+        // done fab
+        doneFab.setOnClickListener(view -> onDone());
     }
 
     private void setupRecyclerView(ImagePickerConfig config) {
@@ -174,10 +199,15 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
                 , bucket -> setImageAdapter(bucket.getImages()));
 
         recyclerViewManager.setImageSelectedListener(selectedImage -> {
+
             invalidateTitle();
+            showHideDoneFab();
+
             if (ConfigUtils.shouldReturn(config, false) && !selectedImage.isEmpty()) {
                 onDone();
+
             }
+
         });
 
     }
@@ -227,6 +257,16 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
     private void invalidateTitle() {
         supportInvalidateOptionsMenu();
         actionBar.setTitle(recyclerViewManager.getTitle());
+    }
+
+    private void showHideDoneFab(){
+        if (doneFab != null){
+            if (recyclerViewManager.isShowDoneButton()){
+                doneFab.show();
+            }else {
+                doneFab.hide();
+            }
+        }
     }
 
     /**
