@@ -1,15 +1,15 @@
 <resources>
 
-    <style name="ef_BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="ef_BaseTheme" parent="Theme.MaterialComponents.Light">
         <item name="windowActionModeOverlay">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
     <style name="ef_AppTheme" parent="ef_BaseTheme">
-        <item name="colorPrimary">@color/ef_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/ef_colorPrimaryDark</item>
-        <item name="colorAccent">@color/ef_colorAccent</item>
+        <item name="colorPrimary">@color/ef_primaryColor</item>
+        <item name="colorPrimaryDark">@color/ef_primaryDarkColor</item>
+        <item name="colorAccent">@color/ef_secondaryColor</item>
     </style>
 
     <style name="ef_CustomToolbarTheme" parent="Base.ThemeOverlay.AppCompat.ActionBar">
