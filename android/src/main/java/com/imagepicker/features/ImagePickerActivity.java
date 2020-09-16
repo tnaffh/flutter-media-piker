@@ -22,6 +22,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
@@ -171,13 +172,14 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
 
         if (actionBar != null) {
 
-            final Drawable arrowDrawable = ViewUtils.getArrowIcon(this);
+            //final Drawable arrowDrawable = ViewUtils.getArrowIcon(this);
+            final Drawable closeDrawable = ContextCompat.getDrawable(this.getApplicationContext(), R.drawable.ic_close);
             final int arrowColor = config.getArrowColor();
-            if (arrowColor != ImagePickerConfig.NO_COLOR && arrowDrawable != null) {
-                arrowDrawable.setColorFilter(arrowColor, PorterDuff.Mode.SRC_ATOP);
+            if (arrowColor != ImagePickerConfig.NO_COLOR && closeDrawable != null) {
+                closeDrawable.setColorFilter(arrowColor, PorterDuff.Mode.SRC_ATOP);
             }
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(arrowDrawable);
+            actionBar.setHomeAsUpIndicator(closeDrawable);
             actionBar.setDisplayShowTitleEnabled(true);
 
         }
