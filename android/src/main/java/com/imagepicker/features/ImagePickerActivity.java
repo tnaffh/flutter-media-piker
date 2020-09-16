@@ -179,6 +179,7 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(arrowDrawable);
             actionBar.setDisplayShowTitleEnabled(true);
+
         }
 
         // capture fab
@@ -280,7 +281,7 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem menuCamera = menu.findItem(R.id.menu_camera);
+        /*MenuItem menuCamera = menu.findItem(R.id.menu_camera);
         if (menuCamera != null) {
             ImagePickerConfig imagePickerConfig = getImagePickerConfig();
             if (imagePickerConfig != null) {
@@ -292,7 +293,7 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
         if (menuDone != null) {
             menuDone.setTitle(ConfigUtils.getDoneButtonText(this, config));
             menuDone.setVisible(recyclerViewManager.isShowDoneButton());
-        }
+        }*/
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -307,14 +308,14 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
             onBackPressed();
             return true;
         }
-        if (id == R.id.menu_done) {
+        /*if (id == R.id.menu_done) {
             onDone();
             return true;
         }
         if (id == R.id.menu_camera) {
             captureImageWithPermission();
             return true;
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
