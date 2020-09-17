@@ -67,7 +67,7 @@
         android:text="Condinue"
         android:textColor="@color/ef_white"
         android:tint="@color/ef_white"
-        android:contentDescription="Condinue"
+        android:contentDescription="Continue"
         android:layout_margin="16dp" />
 
 </RelativeLayout>

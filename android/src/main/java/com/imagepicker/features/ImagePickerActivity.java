@@ -120,9 +120,9 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
                 setupView(config);
                 setupRecyclerView(config);
 
-                if (recyclerViewManager.isShowDoneButton()){
+                if (recyclerViewManager.isShowDoneButton()) {
                     doneFab.show();
-                }else {
+                } else {
                     doneFab.hide();
                 }
             }
@@ -162,8 +162,6 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
 
         captureFab = findViewById(R.id.fab_capture);
         doneFab = findViewById(R.id.fab_done);
-
-
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -262,11 +260,11 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
         actionBar.setTitle(recyclerViewManager.getTitle());
     }
 
-    private void showHideDoneFab(){
-        if (doneFab != null){
-            if (recyclerViewManager.isShowDoneButton()){
+    private void showHideDoneFab() {
+        if (doneFab != null) {
+            if (recyclerViewManager.isShowDoneButton()) {
                 doneFab.show();
-            }else {
+            } else {
                 doneFab.hide();
             }
         }
@@ -369,9 +367,10 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
     private void requestWriteExternalPermission() {
         logger.w("Write External permission is not granted. Requesting permission");
 
-        final String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        final String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
 
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             ActivityCompat.requestPermissions(this, permissions, RC_PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE);
         } else {
             final String permission = PREF_WRITE_EXTERNAL_STORAGE_REQUESTED;
